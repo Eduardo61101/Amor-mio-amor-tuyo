@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Andy</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>E+A <br><br>20-11-2026</h1>
+  <img src="nose.gif" alt="Personaje pixel art" class="pixel-art">
+
+  <p>Hay cosas que uno no planea y, de repente, se vuelven lo mejor de los días. Contigo pasó exactamente así. Al principio todo iba tranquilo, sin prisas ni grandes expectativas, y sin darme cuenta empezaste a ocupar un lugar súper real en mi cabeza y en mi rutina. Hoy me doy cuenta de que no es solo que me gustes o que me caigas increíble: es todo lo que se siente cuando estamos platicando, riéndonos o simplemente coincidiendo.
+  <br><br>
+  Me gusta muchísimo tu forma de ser. Me gusta cómo ves las cosas, cómo hablas, los detalles chiquitos que a veces ni tú notas que haces pero que a mí se me quedan grabados. Me gusta cuando nos entendemos sin tener que explicar demasiado, cuando una tontería se vuelve el mejor chiste del momento y cuando, incluso en los ratos tranquilos, se siente cómodo y natural. Estar contigo no se siente forzado; se siente ligero, honesto y de verdad bonito.
+  <br><br>
+  A veces me pongo a pensar en lo raro y chido que es cómo se acomodan las piezas. De tantas personas, de tantos días y tantas vueltas, terminamos coincidiendo justo aquí, en este punto en el que ya casi todo se siente dicho y solo falta seguir avanzando. Y la neta me da mucha ilusión. No desde un lugar ansioso o exagerado, sino desde esa certeza tranquila de que quiero seguir conociéndote, seguir sumando momentos, seguir escuchándote y seguir construyendo algo que se sienta nuestro.
+  <br><br>
+  Quiero que sepas que te quiero un montón. Que valoro muchísimo tu tiempo, tu forma de estar y lo que hemos ido armando poco a poco. Me encanta lo que somos ahorita y me gusta todavía más pensar en todo lo que viene después, en los planes que todavía no hacemos, en las risas que faltan y en lo bien que se siente saber que cuento contigo y que tú cuentas conmigo.
+  Esto es solo una parte de lo que pienso y siento cuando me acuerdo de ti—y te aseguro que pasa bastante más seguido de lo que digo en voz alta.</p>
+
+  <hr class="separador">
+
+  <section class="contador-section">
+    <h2>Desde el 20 de noviembre de 2026</h2>
+    <p class="contador-sub">Llevamos juntos:</p>
+
+    <div class="contador-grid">
+      <div class="contador-box">
+        <span id="dias">0</span>
+        <small>Días</small>
+      </div>
+      <div class="contador-box">
+        <span id="horas">00</span>
+        <small>Horas</small>
+      </div>
+      <div class="contador-box">
+        <span id="minutos">00</span>
+        <small>Minutos</small>
+      </div>
+      <div class="contador-box">
+        <span id="segundos">00</span>
+        <small>Segundos</small>
+      </div>
+    </div>
+  </section>
+
+  <hr class="separador">
+
+  <section class="juego-section">
+    <h2>Nuestro Minijuego</h2>
+    <div class="contenedor-juego">
+      <div class="selector-jugador">
+        <span>¿Quién juega?:</span>
+        <button id="btn-E" class="btn-jugador activo" onclick="elegirJugador('E')">Eduardo (E)</button>
+        <button id="btn-A" class="btn-jugador" onclick="elegirJugador('A')">Andy (A)</button>
+      </div>
+
+      <div class="barra-records">
+        <span id="texto-record-e">Record de E = 0</span>
+        <span id="texto-record-a">Record de A = 0</span>
+      </div>
+
+      <iframe class="marco-juego" src="Juegos/Juego1/Cupid's Rush.html"></iframe>
+    </div>
+  </section>
+
+  <hr class="separador">
+
+  <section class="playlists">
+    <h2>Nuestras Playlists</h2>
+    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://spotify.com" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  </section>
+
+  <hr class="separador">
+
+  <section class="grid-fotos">
+    <h2 style="grid-column: 1 / -1;">Fotos de Nosotros</h2>
+    <figure class="polaroid">
+      <img src="NoFoto.png" alt="nosotros1">
+      <figcaption>Nosotros 1</figcaption>
+    </figure>
+    <figure class="polaroid">
+      <img src="NoFoto.png" alt="nosotros2">
+      <figcaption>Nosotros 2</figcaption>
+    </figure>
+  </section>
+
+  <hr class="separador">
+
+  <footer>
+    <p>Mas paginas de Estudio Sermiteop:</p>
+    <a href="https://github.io">Portafolio</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
