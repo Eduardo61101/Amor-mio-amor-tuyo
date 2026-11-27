@@ -20,10 +20,12 @@ function actualizarContador() {
 actualizarContador();
 setInterval(actualizarContador, 1000);
 
-// 2. SISTEMA DE RÉCORDS PARA EL MINIJUEGO (E y A)
+// 2. SISTEMA DE RÉCORDS EN LA NUBE CON FIREBASE (E y A)
+const FIREBASE_URL = "https://amor-mio-records-default-rtdb.firebaseio.com";
+
 let jugadorActual = 'E';
-let recordE = Number(localStorage.getItem('record_E')) || 0;
-let recordA = Number(localStorage.getItem('record_A')) || 0;
+let recordE = 0;
+let recordA = 0;
 
 function mostrarRecords() {
   document.getElementById('texto-record-e').textContent = 'Record de E = ' + recordE;
@@ -36,18 +38,47 @@ function elegirJugador(letra) {
   document.getElementById('btn-A').classList.toggle('activo', letra === 'A');
 }
 
-// Esta función la llama Godot automáticamente cada vez que atrapas un objeto
+// Descarga los récords actuales desde Firebase
+async function cargarRecordsNube() {
+  try {
+    const respuesta = await fetch(`${FIREBASE_URL}/records.json`);
+    const datos = await respuesta.json();
+    if (datos) {
+      recordE = Number(datos.E) || 0;
+      recordA = Number(datos.A) || 0;
+      mostrarRecords();
+    }
+  } catch (error) {
+    console.error("Error cargando récords de Firebase:", error);
+  }
+}
+
+// Guarda el nuevo récord en Firebase
+async function guardarRecordNube(letra, nuevoPuntaje) {
+  try {
+    await fetch(`${FIREBASE_URL}/records/${letra}.json`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(nuevoPuntaje)
+    });
+  } catch (error) {
+    console.error("Error guardando récord en Firebase:", error);
+  }
+}
+
+// Esta función la llama Godot cada vez que atrapas un objeto
 window.actualizarPuntos = function(puntosActuales) {
   if (jugadorActual === 'E' && puntosActuales > recordE) {
     recordE = puntosActuales;
-    localStorage.setItem('record_E', recordE);
     mostrarRecords();
+    guardarRecordNube('E', recordE);
   } else if (jugadorActual === 'A' && puntosActuales > recordA) {
     recordA = puntosActuales;
-    localStorage.setItem('record_A', recordA);
     mostrarRecords();
+    guardarRecordNube('A', recordA);
   }
 };
 
-// Muestra los récords guardados al abrir la página
-mostrarRecords();
+// Carga los récords al abrir la página y los sincroniza cada 5 segundos
+cargarRecordsNube();
+setInterval(cargarRecordsNube, 5000);
